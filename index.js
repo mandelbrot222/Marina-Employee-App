@@ -12,6 +12,7 @@ let db = {
   employees: ['1234', '5678', '9012'],
   logs: [],
   schedule: [],
+  staff: [],
   maintenance: [],
   moveOuts: []
 };
@@ -49,6 +50,16 @@ app.get('/api/schedule', (req, res) => {
 
 app.post('/api/schedule', (req, res) => {
   db.schedule.push(req.body);
+  saveDb();
+  res.json({ success: true });
+});
+
+app.get('/api/staff', (req, res) => {
+  res.json(db.staff);
+});
+
+app.post('/api/staff', (req, res) => {
+  db.staff.push(req.body);
   saveDb();
   res.json({ success: true });
 });

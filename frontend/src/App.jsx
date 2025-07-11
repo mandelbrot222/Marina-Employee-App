@@ -1,13 +1,13 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import LoginPage from './pages/LoginPage';
 import MenuPage from './pages/MenuPage';
 import BoatSchedule from './pages/BoatSchedule';
 import Maintenance from './pages/Maintenance';
 import MoveOuts from './pages/MoveOuts';
+import StaffSchedule from './pages/StaffSchedule';
 import Logs from './pages/Logs';
 
-function App() {
+export default function App() {
   return (
     <Router>
       <Routes>
@@ -16,10 +16,9 @@ function App() {
         <Route path="/schedule" element={<BoatSchedule />} />
         <Route path="/maintenance" element={<Maintenance />} />
         <Route path="/moveouts" element={<MoveOuts />} />
+        <Route path="/staff" element={<StaffSchedule />} />
         <Route path="/logs" element={<Logs />} />
       </Routes>
     </Router>
   );
 }
-
-export default App;
