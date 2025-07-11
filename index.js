@@ -1,6 +1,7 @@
 
 const express = require('express');
 const fs = require('fs');
+const path = require('path');
 const cors = require('cors');
 const app = express();
 const PORT = 5000;
@@ -82,6 +83,12 @@ app.post('/api/moveouts', (req, res) => {
   db.moveOuts.push(req.body);
   saveDb();
   res.json({ success: true });
+});
+
+const distPath = path.join(__dirname, 'frontend', 'dist');
+app.use(express.static(distPath));
+app.get('*', (req, res) => {
+  res.sendFile(path.join(distPath, 'index.html'));
 });
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
